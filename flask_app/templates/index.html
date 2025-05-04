@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <title>Articles of Interest</title>
 </head>
 <body>
     <h1>Articles of Interest List</h1>
     <div class="table-wrapper">
-        <table class="fl-table">
+        <table class="fl-table" id="main-table">
+            <thead>
             <tr>
-                <th>ID</th>
+                <!--<th>ID</th>-->
                 <th>SITE NAME</th>
                 <th>SUB-SITE NAME</th>
                 <th>LINK ID</th>
@@ -20,10 +22,13 @@
                 <th>ARTICLE DATE</th>
                 <!--<th>CLASSIFICATION</th>
                 <th>EXPLANATION</th>-->
+                <th>USEFUL?</th>
             </tr>
+            </thead>
+            <tbody>
             {% for article in articles %}
             <tr>
-                <td>{{ article['id'] }}</td>
+                <!--<td>{{ article['id'] }}</td>-->
                 <td>{{ article['site_name'] }}</td>
                 <td>{{ article['sub_site_name'] }}</td>
                 <td>{{ article['link_id'] }}</td>
@@ -32,8 +37,10 @@
                 <td>{{ article['link_date'] }}</td>
                 <!--<td>{{ article['classification'] }}</td>
                 <td>{{ article['explanation'] }}</td>-->
+                <td><!--This cell will house checkbox to tell the server if this title was useful or not>--></td>
             </tr>
             {% endfor %}
+            </tbody>
     </table>
     </div>
 </body>

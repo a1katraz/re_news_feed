@@ -12,7 +12,7 @@ app = Flask(__name__, static_folder='static')
 @app.route('/')
 def index():
     conn = database.mysql_Database('timely_feeds')
-    articles = conn.execute_a_query('SELECT * FROM fact_classified_articles')
+    articles = conn.execute_a_query('SELECT * FROM fact_classified_articles ORDER BY link_date DESC')
     articles_html = articles.to_dict(orient='records')
     conn.extinguish_connection()
     return render_template('index.html', articles=articles_html)
